@@ -27,11 +27,15 @@ adb wait-for-device push ih8sn.rc /system/etc/init/
 
 SERIALNO=$(adb shell getprop ro.boot.serialno)
 PRODUCT=$(adb shell getprop ro.build.product)
+MODEL=$(adb shell getprop ro.product.model)
+RF_VERSION=$(adb shell getprop ro.boot.rf_version)
 
 if [[ -f "ih8sn.conf.${SERIALNO}" ]]; then
     adb wait-for-device push ih8sn.conf.${SERIALNO} /system/etc/ih8sn.conf
 elif [[ -f "ih8sn.conf.${PRODUCT}" ]]; then
     adb wait-for-device push ih8sn.conf.${PRODUCT} /system/etc/ih8sn.conf
+elif [[ -f "ih8sn.conf.${MODEL}_${RF_VERSION}" ]]; then
+    adb wait-for-device push ih8sn.conf.${MODEL}_${RF_VERSION} /system/etc/ih8sn.conf
 else
     adb wait-for-device push ih8sn.conf /system/etc/
 fi
