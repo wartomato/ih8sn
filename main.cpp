@@ -141,9 +141,7 @@ int main(int argc, char *argv[]) {
     if (is_boot_completed_stage) {
         property_override("ro.boot.flash.locked", "1");
         property_override("ro.boot.vbmeta.device_state", "locked");
-        property_override("vendor.boot.vbmeta.device_state", "locked");
         property_override("ro.boot.verifiedbootstate", "green");
-        property_override("vendor.boot.verifiedbootstate", "green");
         property_override("ro.boot.veritymode", "enforcing");
         property_override("ro.is_ever_orange", "0");
         property_override("ro.secure", "1");
