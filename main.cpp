@@ -85,6 +85,7 @@ int main(int argc, char *argv[]) {
     const auto debuggable = config.find("DEBUGGABLE");
     const auto manufacturer_name = config.find("MANUFACTURER_NAME");
     const auto product_name = config.find("PRODUCT_NAME");
+    const auto product_model = config.find("PRODUCT_MODEL");
 
     if (is_init_stage && build_fingerprint != config.end()) {
         property_override(property_list("ro.", "build.fingerprint"),
@@ -118,8 +119,8 @@ int main(int argc, char *argv[]) {
                 build_security_patch_date->second.c_str());
     }
 
-    if (is_init_stage && debuggable != config.end()) {
-        property_override("ro.debuggable", debuggable->second.c_str());
+    if (is_init_stage) {
+        property_override("ro.debuggable", "0");
     }
 
     if (is_init_stage && manufacturer_name != config.end()) {
@@ -129,6 +130,10 @@ int main(int argc, char *argv[]) {
 
     if (is_init_stage && product_name != config.end()) {
         property_override(property_list("ro.product.", "name"), product_name->second.c_str());
+    }
+
+    if (is_init_stage && product_name != config.end()) {
+        property_override(property_list("ro.product.", "model"), product_model->second.c_str());
     }
 
     if (is_boot_completed_stage) {
