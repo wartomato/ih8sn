@@ -132,7 +132,7 @@ int main(int argc, char *argv[]) {
         property_override(property_list("ro.product.", "name"), product_name->second.c_str());
     }
 
-    if (is_init_stage && product_name != config.end()) {
+    if (is_init_stage && product_model != config.end()) {
         property_override(property_list("ro.product.", "model"), product_model->second.c_str());
     }
 
