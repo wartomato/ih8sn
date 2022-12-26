@@ -46,7 +46,6 @@ std::vector<std::string> property_list(const std::string &prefix, const std::str
 
     for (const std::string &part : {
         "",
-        "boot.",
         "bootimage.",
         "odm_dlkm.",
         "odm.",
@@ -56,7 +55,6 @@ std::vector<std::string> property_list(const std::string &prefix, const std::str
         "system.",
         "vendor_dlkm.",
         "vendor.",
-        "vendor.boot.",
     }) {
         props.emplace_back(prefix + part + suffix);
     }
