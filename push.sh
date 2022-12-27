@@ -34,8 +34,10 @@ if [[ -f "ih8sn.conf.${SERIALNO}" ]]; then
     adb wait-for-device push ih8sn.conf.${SERIALNO} /system/etc/ih8sn.conf
 elif [[ -f "ih8sn.conf.${PRODUCT}" ]]; then
     adb wait-for-device push ih8sn.conf.${PRODUCT} /system/etc/ih8sn.conf
-elif [[ -f "ih8sn.conf.${MODEL}_${RF_VERSION}" ]]; then
-    adb wait-for-device push ih8sn.conf.${MODEL}_${RF_VERSION} /system/etc/ih8sn.conf
+elif [[ -f "ih8sn.conf.${MODEL}" ]]; then
+    adb wait-for-device push ih8sn.conf.${MODEL} /system/etc/ih8sn.conf
+elif [[ -f "ih8sn.conf.rf${RF_VERSION}" ]]; then
+    adb wait-for-device push ih8sn.conf.rf${RF_VERSION} /system/etc/ih8sn.conf
 else
     adb wait-for-device push ih8sn.conf /system/etc/
 fi

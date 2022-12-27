@@ -27,8 +27,10 @@ if (Test-Path "ih8sn.conf.${serialno}" -PathType leaf) {
     adb wait-for-device push ih8sn.conf.${serialno} /system/etc/ih8sn.conf
 } elseif (Test-Path "ih8sn.conf.${product}" -PathType leaf) {
     adb wait-for-device push ih8sn.conf.${product} /system/etc/ih8sn.conf
-} elseif (Test-Path "ih8sn.conf.${model}_${rf_version}" -PathType leaf) {
-    adb wait-for-device push ih8sn.conf.${model}_${rf_version} /system/etc/ih8sn.conf
+} elseif (Test-Path "ih8sn.conf.${model}" -PathType leaf) {
+    adb wait-for-device push ih8sn.conf.${model} /system/etc/ih8sn.conf
+} elseif (Test-Path "ih8sn.conf.rf${rf_version}" -PathType leaf) {
+    adb wait-for-device push ih8sn.conf.rf${rf_version} /system/etc/ih8sn.conf
 } else {
     adb wait-for-device push ih8sn.conf /system/etc/
 }
